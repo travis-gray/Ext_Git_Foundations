@@ -1,0 +1,322 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Collaborating With Others – Merge Conflicts and Git Workflows &#8212; Git Foundations 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Git Foundations 1.0 documentation" href="../index.html" />
+    <link rel="next" title="The Command Line Interface (CLI)" href="CLI.html" />
+    <link rel="prev" title="Collaborating With Others – Different Repositories" href="Forking.html" />
+<link href="http://vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">
+<script src="http://vjs.zencdn.net/4.12/video.js"></script>
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../_static/c1_labs.png"></span>
+          Git Foundations</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Course <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Github_Background.html">Github Background</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Github_Background.html#git">Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Github_Background.html#hub">Hub</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="What_is_Version_Control.html">What is Version Control</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="What_is_Version_Control.html#basic-version-control">Basic Version Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="What_is_Version_Control.html#working-directory">1. Working Directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="What_is_Version_Control.html#staging-area">2. Staging Area</a></li>
+<li class="toctree-l2"><a class="reference internal" href="What_is_Version_Control.html#github-repository">3. Github Repository</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Basic_Exercise.html">Basic Exercise 1</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Basic_Exercise.html#getting-access-to-github">Getting Access to GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Basic_Exercise.html#github-gui-quick-overview">Github GUI Quick Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Basic_Exercise_2.html">Basic Exercise 2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Basic_Exercise_2.html#initialize-the-repo">Initialize the Repo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Basic_Exercise_2.html#make-your-edits">Make your edits</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Exploring_the_Github_Page.html">Exploring the Github Page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Branching.html">Collaborating with Others &#8211; Same Repository</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Branching.html#naming-a-collaborator">Naming a Collaborator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Branching.html#the-most-basic-collaborative-workflow">The Most Basic Collaborative Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Branching.html#branching">Branching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Branching.html#pull-requests">Pull Requests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Forking.html">Collaborating with Others &#8211; Different Repositories</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Forking.html#forking">Forking</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Collaborating with Others &#8211; Merge Conflicts and Git Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#merge-conflicts">Merge Conflicts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-workflows">Advanced Workflows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tip-issues">Tip - Issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="CLI.html">The Command Line Interface (CLI)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="CLI.html#try-it-out">Try it out</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CLI.html#changing-a-file">Changing a File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CLI.html#advanced-usage">Advanced Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="SSH_Keys.html">SSH Keys</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SSH_Keys.html#generating-an-ssh-key-pair">Generating an SSH key pair</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SSH_Keys.html#adding-your-key-to-github">Adding your key to Github</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SSH_Keys.html#shake-hands-with-github-through-ssh">Shake hands with Github through ssh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SSH_Keys.html#using-your-ssh-key">Using Your SSH Key</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Publishing_from_CLI.html">Publishing from the CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Conclusion.html">Conclusion</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Topic <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Collaborating With Others &#8211; Merge Conflicts and Git Workflows</a><ul>
+<li><a class="reference internal" href="#merge-conflicts">Merge Conflicts</a></li>
+<li><a class="reference internal" href="#advanced-workflows">Advanced Workflows</a><ul>
+<li><a class="reference internal" href="#tip-issues">Tip - Issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="Forking.html" title="Previous Chapter: Collaborating With Others – Different Repositories"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Collaborating...</span>
+    </a>
+  </li>
+  <li>
+    <a href="CLI.html" title="Next Chapter: The Command Line Interface (CLI)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">The Command L... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../_sources/course/Merge.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="collaborating-with-others-merge-conflicts-and-git-workflows">
+<h1>Collaborating With Others &#8211; Merge Conflicts and Git Workflows<a class="headerlink" href="#collaborating-with-others-merge-conflicts-and-git-workflows" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="merge-conflicts">
+<h2>Merge Conflicts<a class="headerlink" href="#merge-conflicts" title="Permalink to this headline">¶</a></h2>
+<p>What happens if you and your partner try to edit the same part of the same file at the same time? This creates a problem, because there&#8217;s no longer a single authoritative version of the file. This situation is known as a &#8220;merge conflict&#8221;. Generally merge conflicts are avoided by making sure that collaborators are all working on different files, but if you do end up hitting a conflict Git will alert you, mark the regions of the file where the conflict occurs in that file, and then let you edit that file to resolve the conflict.</p>
+<p>Let&#8217;s walk through a conflict here... In this example repository, I have a short SQL script with the following lines:</p>
+<div class="highlight-SQL"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="o">*</span>
+<span class="k">FROM</span>    <span class="n">source_table</span>
+</pre></div>
+</div>
+<p>Then my collaborator added a join condition to the SQL script. However, I begin editing without pulling his change down first.</p>
+<div class="highlight-SQL"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="o">*</span>
+<span class="k">FROM</span>    <span class="n">source_table</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">data_table</span>
+        <span class="k">ON</span> <span class="n">source_table</span><span class="p">.</span><span class="k">index</span> <span class="o">=</span> <span class="n">data_table</span><span class="p">.</span><span class="k">index</span>
+</pre></div>
+</div>
+<p>His code is above. My code is below:</p>
+<div class="highlight-SQL"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="o">*</span>
+<span class="k">FROM</span>    <span class="n">source_table</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">better_data_table</span>
+        <span class="k">ON</span> <span class="n">source_table</span><span class="p">.</span><span class="k">index</span> <span class="o">=</span> <span class="n">better_data_table</span><span class="p">.</span><span class="k">index</span>
+</pre></div>
+</div>
+<p>Look what happens when I try to send my commit up...</p>
+<img alt="Sync Error" class="align-center" src="../_images/conflict1.png" />
+<p>Our file has now been changed! Take a look at the change git made - it has the original script and BOTH our changes:</p>
+<img alt="Commit resolution" class="align-center" src="../_images/conflict2.png" />
+<p>Git is also prompting me to do a new commit to resolve the conflict. It is saying &#8220;I can&#8217;t reconcile these differences on my own, show me how and make it part of the history of this repository so others can see how it was resolved in the future.&#8221;</p>
+<img alt="Merge commit prompt" class="align-center" src="../_images/conflict3.png" />
+<p>As you saw above the code now looks like this:</p>
+<div class="highlight-SQL"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="o">*</span>
+<span class="k">FROM</span>    <span class="n">source_table</span>
+<span class="o">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="n">HEAD</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">better_data_table</span>
+        <span class="k">ON</span> <span class="n">source_table</span><span class="p">.</span><span class="k">index</span> <span class="o">=</span> <span class="n">better_data_table</span><span class="p">.</span><span class="k">index</span>
+<span class="o">=======</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">data_table</span>
+<span class="k">ON</span> <span class="n">source_table</span><span class="p">.</span><span class="k">index</span> <span class="o">=</span> <span class="n">data_table</span><span class="p">.</span><span class="k">index</span>
+<span class="o">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="n">origin</span><span class="o">/</span><span class="n">master</span>
+</pre></div>
+</div>
+<p>Let&#8217;s break this down. The portion that says &#8220;&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD&#8221; tells you the beginning of the conflict. The portion marked HEAD is the change <strong>on your local computer</strong>. The portion marked &#8220;&gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/master&#8221; is the end of the conflict. The origin/master part is the change <strong>on the remote repository</strong>. Now that we understand what&#8217;s going on, let&#8217;s resolve it; We have to manage this on our computer now.</p>
+<p>Open the conflicted file in any of your text editors. The way Github handles conflicts is it spits both versions back at you and tells <strong>you to figure it out</strong>. Let&#8217;s just say I actually want to do both of these joins. So first, I need to erase the line with HEAD, the === divider, and origin/master line. Then I&#8217;ll edit it so it looks like the following:</p>
+<div class="highlight-SQL"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="o">*</span>
+<span class="k">FROM</span>    <span class="n">source_table</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">better_data_table</span>
+        <span class="k">ON</span> <span class="n">source_table</span><span class="p">.</span><span class="k">index</span> <span class="o">=</span> <span class="n">better_data_table</span><span class="p">.</span><span class="k">index</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">data_table</span>
+        <span class="k">ON</span> <span class="n">source_table</span><span class="p">.</span><span class="k">index</span> <span class="o">=</span> <span class="n">data_table</span><span class="p">.</span><span class="k">index</span>
+</pre></div>
+</div>
+<p>I save and hit the commit button (make sure to check the box next to the file).</p>
+<img alt="conflict resolved-in process" class="align-center" src="../_images/conflict4.png" />
+<p>Now you can sync all your changes to resolve the conflict.</p>
+<p>Notice in the log, that it now has three commits.</p>
+<ol class="arabic simple">
+<li>My collaborator&#8217;s commit</li>
+<li>My commit</li>
+<li>Merge remote-tracking branch... etc. etc.</li>
+</ol>
+<p>This means that on top of the original change by my collaborator and
+my added commit, I now have a commit of the merged state. Phew!
+Problem solved. Hopefully you will make sure to sync beforehand to
+reduce the chance of running into this problem. But whenever you do,
+now you know how to handle it.</p>
+<p>Note that if you try to issue a Pull Request in GitHub and there is a
+merge conflict, GitHub will force you to resolve that conflict on your
+local machine (in the above manner) and sync the changes before
+allowing you to merge.</p>
+</div>
+<div class="section" id="advanced-workflows">
+<h2>Advanced Workflows<a class="headerlink" href="#advanced-workflows" title="Permalink to this headline">¶</a></h2>
+<p>We&#8217;ve now discussed several different ways of working with
+others using Git and GitHub. We&#8217;ve also discussed the pain that can
+happen when multiple people work collaboratively on the same parts of
+a project. How you avoid this pain is up to you and your team, but
+there are several well-established conventions designed to maximize
+efficiency and minimize merge conflicts.</p>
+<p>Atlassian provides an <a class="reference external" href="https://www.atlassian.com/git/tutorials/comparing-workflows/centralized-workflow">excellent overview</a>
+of several of these workflows, and we highly recommend reading it
+carefully. (Note that it uses command line Git for its examples, which
+we will cover in the next sections.)</p>
+<div class="section" id="tip-issues">
+<h3>Tip - Issues<a class="headerlink" href="#tip-issues" title="Permalink to this headline">¶</a></h3>
+<p>When you are collaborating on a project with someone, you sometimes
+come across problems that need to be fixed. To help you keep track of
+these problems, each GitHub repository has a section called
+Issues. All questions and problems posted to the repo&#8217;s issues will be
+recorded for future reference, and GitHub has <a class="reference external" href="http://www.ianbicking.org/blog/2014/03/use-github-issues-to-organize-a-project.html">several features
+designed around issues to make it easy to use them to manage projects</a>. Issues
+can be additionally useful for reducing merge conflicts &#8211; issues can
+be assigned to individuals, and once assigned it&#8217;s easy to see what
+others are working on and avoid overlap.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+    <a href="Forking.html" title="Previous Chapter: Collaborating With Others – Different Repositories"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Collaborating...</span>
+    </a>|
+    <a href="#">Back to top</a>
+    | <a href="CLI.html" title="Next Chapter: The Command Line Interface (CLI)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">The Command L... &raquo;</span>
+    </a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, Capital One Big Data Academy.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.8.<br/>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>
