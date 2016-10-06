@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The Command Line Interface (CLI) &#8212; Git Foundations 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="top" title="Git Foundations 1.0 documentation" href="../index.html" />
+    <link rel="next" title="SSH Keys" href="SSH_Keys.html" />
+    <link rel="prev" title="Collaborating With Others – Merge Conflicts and Git Workflows" href="Merge.html" />
+<link href="http://vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">
+<script src="http://vjs.zencdn.net/4.12/video.js"></script>
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../_static/c1_labs.png"></span>
+          Git Foundations</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Course <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Github_Background.html">Github Background</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Github_Background.html#git">Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Github_Background.html#hub">Hub</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="What_is_Version_Control.html">What is Version Control</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="What_is_Version_Control.html#basic-version-control">Basic Version Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="What_is_Version_Control.html#working-directory">1. Working Directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="What_is_Version_Control.html#staging-area">2. Staging Area</a></li>
+<li class="toctree-l2"><a class="reference internal" href="What_is_Version_Control.html#github-repository">3. Github Repository</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Basic_Exercise.html">Basic Exercise 1</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Basic_Exercise.html#getting-access-to-github">Getting Access to GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Basic_Exercise.html#github-gui-quick-overview">Github GUI Quick Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Basic_Exercise_2.html">Basic Exercise 2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Basic_Exercise_2.html#initialize-the-repo">Initialize the Repo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Basic_Exercise_2.html#make-your-edits">Make your edits</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Exploring_the_Github_Page.html">Exploring the Github Page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Branching.html">Collaborating with Others &#8211; Same Repository</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Branching.html#naming-a-collaborator">Naming a Collaborator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Branching.html#the-most-basic-collaborative-workflow">The Most Basic Collaborative Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Branching.html#branching">Branching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Branching.html#pull-requests">Pull Requests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Forking.html">Collaborating with Others &#8211; Different Repositories</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Forking.html#forking">Forking</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Merge.html">Collaborating with Others &#8211; Merge Conflicts and Git Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Merge.html#merge-conflicts">Merge Conflicts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Merge.html#advanced-workflows">Advanced Workflows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Merge.html#tip-issues">Tip - Issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The Command Line Interface (CLI)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#try-it-out">Try it out</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#changing-a-file">Changing a File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-usage">Advanced Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="SSH_Keys.html">SSH Keys</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SSH_Keys.html#generating-an-ssh-key-pair">Generating an SSH key pair</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SSH_Keys.html#adding-your-key-to-github">Adding your key to Github</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SSH_Keys.html#shake-hands-with-github-through-ssh">Shake hands with Github through ssh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SSH_Keys.html#using-your-ssh-key">Using Your SSH Key</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Publishing_from_CLI.html">Publishing from the CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Conclusion.html">Conclusion</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Topic <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">The Command Line Interface (CLI)</a><ul>
+<li><a class="reference internal" href="#try-it-out">Try it out</a></li>
+<li><a class="reference internal" href="#changing-a-file">Changing a File</a></li>
+<li><a class="reference internal" href="#advanced-usage">Advanced Usage</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="Merge.html" title="Previous Chapter: Collaborating With Others – Merge Conflicts and Git Workflows"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Collaborating...</span>
+    </a>
+  </li>
+  <li>
+    <a href="SSH_Keys.html" title="Next Chapter: SSH Keys"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">SSH Keys &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../_sources/course/CLI.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="the-command-line-interface-cli">
+<span id="cli"></span><h1>The Command Line Interface (CLI)<a class="headerlink" href="#the-command-line-interface-cli" title="Permalink to this headline">¶</a></h1>
+<p>Behind every action in the friendly Github GUI is a series of commands that are run on the command line (or terminal). Although there is a learning curve for learning these commands, it is very important for the following reasons:</p>
+<ul class="simple">
+<li>If you plan to host a project on a server, there won&#8217;t be a nice GUI to interface with on the server.</li>
+<li>It is much faster to use version control on the command line than via the application. Depending on the size of your repository, it may take a while to get your files online (try pushing 500MB to a repo!)</li>
+<li>There are commands that haven&#8217;t been included in the GUI interface. For example, it&#8217;s not easy in the GUI to return a file to &#8220;5 versions ago&#8221;, while in the command line, you would use a single command.</li>
+</ul>
+<p>Conceptually, it is the same as what you had been doing before on the
+GUI, except your fingers will get a workout. If you are uncomfortable
+with the Unix interface, there are lots of free resources online such as:</p>
+<p><a class="reference external" href="https://www.codecademy.com/learn/learn-the-command-line">https://www.codecademy.com/learn/learn-the-command-line</a>
+<a class="reference external" href="http://openclassroom.stanford.edu/MainFolder/CoursePage.php?course=PracticalUnix">http://openclassroom.stanford.edu/MainFolder/CoursePage.php?course=PracticalUnix</a></p>
+<div class="section" id="try-it-out">
+<h2>Try it out<a class="headerlink" href="#try-it-out" title="Permalink to this headline">¶</a></h2>
+<p>So let&#8217;s try this on the command line now. Open up Git Bash if you want to follow along using your local machine (or, if you&#8217;re working locally on a Mac, open the Terminal). The first time we use Git on a new machine, we need to configure a few things. Here&#8217;s how to set up:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>git config --global user.name <span class="s2">&quot;Firstname Lastname&quot;</span>
+git config --global user.email <span class="s2">&quot;your@email.com&quot;</span>
+git config --global color.ui <span class="s2">&quot;auto&quot;</span>
+</pre></div>
+</div>
+<p>In this case, we&#8217;re telling Git our name and email address, to colorize output, and to use these settings globally with the &#8211;global flag.</p>
+<p>Now that Git is configured, let&#8217;s create a repository following the instructions below:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># make an empty folder named &lt;username&gt;_CLI_REPO</span>
+mkdir &lt;username&gt;_CLI_REPO
+
+<span class="c1"># go into the folder</span>
+<span class="nb">cd</span> &lt;username&gt;_CLI_REPO
+
+<span class="c1"># initialize the repository to enable git</span>
+git init
+
+<span class="c1"># Make a file named README and fill it with the phrase &quot;Hello World&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;Hello World&quot;</span> &gt; README.md
+</pre></div>
+</div>
+<p>If you type &#8216;ls -a&#8217; in the directory now, you will find a &#8216;.git&#8217; folder. What &#8220;git init&#8221; does is create a hidden directory where git stores information about the repo&#8217;s history.</p>
+<p>Now that we&#8217;ve been set up let&#8217;s do a quick walkthrough of version control again:</p>
+<blockquote>
+<div><p>1. Working Directory:
+This is the repository or folder that you are currently making your changes in. However, you need to directly tell git that you want to track certain files - otherwise, git won’t take snapshots of those changes.</p>
+<p>2. Staging Area:
+The staging area contains all the tracked(added) files and information about what will go into your next commit. Think of this as the purgatory between snapshots. When you finally “Commit”, it saves the snapshot and your staging area will be clear.</p>
+<p>3. Github Repository:
+You send and receive snapshots to and from the Github Server through pushing (to send your changes) and pulling (to pull changes from collaborators).</p>
+</div></blockquote>
+<p>You easily check the state of each file in your repo, whether it&#8217;s in the staging area or if it&#8217;s not committed yet by typing</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>git status
+</pre></div>
+</div>
+<p>It should return the following screen</p>
+<img alt="status page" src="../_images/gitstatus.PNG" />
+<p>This screen tells us that our file &#8220;README.md&#8221; is currently not tracked by github, so changes to it won&#8217;t be recorded. Let&#8217;s track it:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Track the README.md file</span>
+git add README.md
+
+<span class="c1"># Now let&#39;s check our repository&#39;s status</span>
+git status
+</pre></div>
+</div>
+<img alt="file added" src="../_images/gitadd.PNG" />
+<p>The README.md filename is now in green! That means that it is in the staging area, and that the changes to it are tracked. Git now knows that it&#8217;s supposed to keep track of README.md, but it hasn&#8217;t yet recorded any changes as a commit. The only step left is to take a snapshot.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Commit your changes. Following -m is the name of the commit.</span>
+git commit -m <span class="s2">&quot;Initial Commit&quot;</span>
+</pre></div>
+</div>
+<p>When we run git commit, Git takes everything we have told it to save by using git add and stores a copy permanently inside the special .git directory. Whenever you want to reference this special copy, you just need to use the hash name for the commit seen in the output.</p>
+<img alt="make a commit" src="../_images/gitcommit.PNG" />
+<p>Now run git status one more time</p>
+<img alt="Working Directory Clean" src="../_images/gitcommit2.PNG" />
+<p>It tells us that our working directory is cleared - there are no new changes that git has noticed. Since I mentioned the hash name for the commit before, how would we pull up our history of commits and their hash names? You can do this by using the git log command.</p>
+<img alt="see log" src="../_images/gitlog.PNG" />
+<p>This allows you to see your history of commits (we only have one so far), the author, and time of each commit. Notice that the first 7 characters of the commit name were the hash name. &#8220;git log&#8221; lists all revisions made to a repository in reverse chronological order.</p>
+</div>
+<div class="section" id="changing-a-file">
+<h2>Changing a File<a class="headerlink" href="#changing-a-file" title="Permalink to this headline">¶</a></h2>
+<p>Now suppose you add more information to the file... Let&#8217;s see how git handles it. Run the following command to add a new line:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Add the line &quot;Goodbye World&quot; to README.md</span>
+<span class="nb">echo</span> <span class="s2">&quot;Goodbye World...&quot;</span> &gt;&gt; README.md
+
+<span class="c1"># Spit out the contents of README.md</span>
+cat README.md
+</pre></div>
+</div>
+<p>You should see &#8220;Hello World&#8221; and &#8220;Goodbye World...&#8221; on top of each other. Congratulations! We&#8217;ve made an edit to the readme file. To see what git thinks, type &#8220;git status&#8221;.</p>
+<img alt="see status after change" src="../_images/chg_gitstatus.PNG" />
+<p>Git automatically noticed that there was a change to README.md . If you want to see what the difference between your current version and last version is, type &#8220;git diff&#8221;.</p>
+<img alt="see difference" src="../_images/gitdiff.PNG" />
+<p>The output is cryptic because it is actually a series of commands for tools like editors, but you only need to pay attention to the last part, which shows the added line in green. You can see that the change was an addition (by the plus symbol) and what words were added.</p>
+<p>Now that we understand our change. Let&#8217;s add it to the staging area with:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1">#This time we don&#39;t need to specify the file name. The &quot;.&quot; re-adds all previously tracked files, so if you type git status again, you&#39;ll notice that README.md has been added.</span>
+git add .
+
+<span class="c1">#Let&#39;s make our second commit</span>
+git commit -m <span class="s2">&quot;Leaving the world&quot;</span>
+
+<span class="c1">#And check git log now</span>
+git log
+</pre></div>
+</div>
+<img alt="see second commit" src="../_images/gitlog2.PNG" />
+<p>Boom! We can see our second commit in the log. Now all we&#8217;ve done is
+take snapshots internally within our server, but we want to publish
+this on Github. To do that we&#8217;ll need to set up a way for Github to
+connect to the command line: &#8220;SSH&#8221; (secure shell).</p>
+</div>
+<div class="section" id="advanced-usage">
+<h2>Advanced Usage<a class="headerlink" href="#advanced-usage" title="Permalink to this headline">¶</a></h2>
+<p>The commands above are more than sufficient for most basic Git usage,
+but there&#8217;s tons more functionality in command-line Git. For example,
+creating a branch is simply <code class="code bash docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="operator"><span class="pre">[</span></span><span class="pre">BRANCH</span>
+<span class="pre">NAME</span><span class="operator"><span class="pre">]</span></span></code>. That command will also switch you to that new branch &#8211; to
+switch to a branch that already exists you can drop the -b and type
+<code class="code bash docutils literal"><span class="pre">git</span> <span class="pre">checkout</span> <span class="operator"><span class="pre">[</span></span><span class="pre">BRANCH</span> <span class="pre">NAME</span><span class="operator"><span class="pre">]</span></span></code>.  To see all branches is just
+<code class="code bash docutils literal"><span class="pre">git</span> <span class="pre">branch</span></code>, and you can include remote branches with
+<code class="code bash docutils literal"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-a</span></code>.</p>
+<p>Merging is fairly simple, as well. Switch to the branch you want to
+merge into, then type <code class="code bash docutils literal"><span class="pre">git</span> <span class="pre">merge</span> <span class="operator"><span class="pre">[</span></span><span class="pre">BRANCH</span> <span class="pre">TO</span> <span class="pre">MERGE</span> <span class="pre">FROM</span><span class="operator"><span class="pre">]</span></span></code>. For
+instance, to merge changes from the develop branch into the master
+branch, you would enter:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>git checkout master
+git merge develop
+</pre></div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+    <a href="Merge.html" title="Previous Chapter: Collaborating With Others – Merge Conflicts and Git Workflows"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Collaborating...</span>
+    </a>|
+    <a href="#">Back to top</a>
+    | <a href="SSH_Keys.html" title="Next Chapter: SSH Keys"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">SSH Keys &raquo;</span>
+    </a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, Capital One Big Data Academy.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.8.<br/>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>
